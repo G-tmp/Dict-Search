@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="Content-Type" content="text/html; charset=utf-8">
+  <title>Dictionary Options</title>
+  <style>
+    body { font-family: sans-serif; max-width: 800px; margin: auto}
+    input { width: 100%; margin-bottom: 8px; }
+    button { margin-left: 10px; }
+    .site { border-bottom: 1px solid #ccc; padding: 8px 0; }
+  </style>
+</head>
+<body>
+  <h2>Add Dictionary</h2>
+  Please use <strong>{word}</strong> replace the query parameter
+  <form accept-charset=utf-8>
+    <input id="name" placeholder="Site name" required>
+    <input id="url" placeholder="URL (use {word})" required>
+    <button id="add">Add</button>
+  </form>
+  <h2>Current Sites</h2>
+  <div id="list"></div>
+
+  <script src="options.js"></script>
+</body>
+</html>
