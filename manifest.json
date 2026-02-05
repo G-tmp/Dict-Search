@@ -1,19 +1,16 @@
 {
   "manifest_version": 2,
   "name": "Dict Search",
-  "version": "1.0",
+  "version": "1.0.3",
   "description": "Search selected words in multiple dictionaries",
   "homepage_url": "https://github.com/g-tmp/Dict-Search",
+  
   "permissions": [
     "menus",
     "storage",
     "tabs",
     "<all_urls>"
   ],
-
-  "icons": {
-    "512": "icons/cherry-blossom.png"
-  },
 
   "background": {
     "scripts": ["background.js"]
@@ -22,6 +19,11 @@
   "options_ui": {
     "page": "options/options.html",
     "open_in_tab": true
+  },
+
+  "icons": {
+    "48": "icons/cherry-blossom-48.png",
+    "512": "icons/cherry-blossom.png"
   },
 
   "browser_specific_settings": {

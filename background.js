@@ -3,11 +3,29 @@ const ROOT_MENU_ID = "dictionary-root";
 /* default dictionary (first install) */
 const DEFAULT_SITES = [
   {
-    id: "cambridge",
+    id: "Cambridge",
     name: "Cambridge",
     url: "https://dictionary.cambridge.org/dictionary/english/{word}"
   }
 ];
+
+
+// on browser start
+browser.storage.sync.get("sites").then(({sites}) => {
+  createMenus(sites || []);
+});
+
+// First install
+browser.runtime.onInstalled.addListener(async () => {
+  const { sites } = await browser.storage.sync.get("sites");
+
+  if (!sites) {
+    await browser.storage.sync.set({ sites: DEFAULT_SITES });
+    createMenus(DEFAULT_SITES);
+  } else {
+    createMenus(sites);
+  }
+});
 
 // create menu and submenus
 async function createMenus(sites) {
@@ -32,18 +50,6 @@ async function createMenus(sites) {
     });
   }
 }
-
-// First install
-browser.runtime.onInstalled.addListener(async () => {
-  const { sites } = await browser.storage.sync.get("sites");
-
-  if (!sites) {
-    await browser.storage.sync.set({ sites: DEFAULT_SITES });
-    createMenus(DEFAULT_SITES);
-  } else {
-    createMenus(sites);
-  }
-});
 
 // right click
 browser.menus.onClicked.addListener(async (info, tab) => {
